@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_theme().
+ *
+ * {@inheritdoc}
+ */
+function instagram_formatter_theme() {
+  return [
+    'instagram_formatter_post' => [
+      'variables' => [
+        'data' => NULL,
+      ],
+      'template' => 'instagram-block',
+    ],
+  ];
+}

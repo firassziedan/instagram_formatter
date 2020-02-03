@@ -1,0 +1,8 @@
+name: Instagram Formatter
+description: 'Instagram block that displays Instagram posts'
+type: module
+version: '8.x-1.0'
+core: '8.x'
+package: Instagram
+dependencies:
+  - smart_trim

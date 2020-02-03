@@ -1,0 +1,72 @@
+.instagram-wapper {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+.instagram-wapper .profile h2 {
+  margin-top: 10px; }
+.instagram-wapper .profile a {
+  display: inline-block;
+  text-decoration: none;
+  direction: ltr; }
+.instagram-wapper .profile a:hover svg path {
+  fill: #c8102e; }
+.instagram-wapper .profile a:hover h2 {
+  color: #c8102e; }
+.instagram-wapper .posts-wrapper {
+  position: relative; }
+.instagram-wapper .posts-wrapper .post-wrapper {
+  display: block;
+  margin-bottom: 15px; }
+.instagram-wapper .posts-wrapper .post-wrapper .post {
+  position: relative;
+  display: grid;
+  display: -ms-grid;
+  overflow: hidden; }
+.instagram-wapper .posts-wrapper .post-wrapper .post .post-image {
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain; }
+.instagram-wapper .posts-wrapper .post-wrapper .post .post-caption {
+  position: absolute;
+  background: rgba(200, 16, 46, 0.5);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 30px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  -o-transition: opacity 0.5s, -o-transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s, -o-transform 0.5s;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }
+.instagram-wapper .posts-wrapper .post-wrapper .post .post-caption .caption {
+  direction: ltr;
+  text-align: left;
+  -webkit-transition: -webkit-transform 0.65s;
+  transition: -webkit-transform 0.65s;
+  -o-transition: -o-transform 0.65s;
+  transition: transform 0.65s;
+  transition: transform 0.65s, -webkit-transform 0.65s, -o-transform 0.65s;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }
+.instagram-wapper .posts-wrapper .post-wrapper .post:hover .post-caption {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.instagram-wapper .posts-wrapper .post-wrapper .post:hover .post-caption .caption {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
