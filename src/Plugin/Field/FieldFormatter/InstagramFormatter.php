@@ -2,14 +2,16 @@
 
 namespace Drupal\instagram_formatter\Plugin\Field\FieldFormatter;
 
-use Drupal;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Annotation\Translation;
+use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\smart_trim\Truncate\TruncateHTML;
-use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\ClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -24,6 +26,22 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class InstagramFormatter extends FormatterBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * GuzzleHttp\ClientInterface definition.
+   *
+   * @var \GuzzleHttp\ClientInterface
+   */
+  protected $httpClient;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($plugin_id, $plugin_definition, \Drupal\Core\Field\FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, ClientInterface $http_client) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
+
+    $this->httpClient = $http_client;
+  }
 
   /**
    * Creates an instance of the plugin.
@@ -48,25 +66,23 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
       $configuration['settings'],
       $configuration['label'],
       $configuration['view_mode'],
-      $configuration['third_party_settings']
+      $configuration['third_party_settings'],
+      $container->get('http_client')
     );
   }
 
   /**
-   * @return array
+   * {@inheritdoc}
    */
   public static function defaultSettings() {
     return [
-        'num' => 4,
-        'caption' => TRUE,
-      ] + parent::defaultSettings();
+      'num' => 4,
+      'caption' => TRUE,
+    ] + parent::defaultSettings();
   }
 
   /**
-   * @param array $form
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *
-   * @return array
+   * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = parent::settingsForm($form, $form_state);
@@ -104,7 +120,7 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $build = [];
 
-    foreach ($items as $delta => $item) {
+    foreach ($items as $item) {
       $build['profile'] = $item->value;
     }
 
@@ -115,9 +131,10 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
 
       // Get Response file_get_contents($url);
       try {
-        $instagram_url = Drupal::httpClient()->get($url);
+        $instagram_url = $this->httpClient->request('GET', $url);
         $response = (string) $instagram_url->getBody();
-      } catch (TransferException $e) {
+      }
+      catch (GuzzleException $e) {
         return [];
       }
 
@@ -145,14 +162,14 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
         $variable = $obj['entry_data']['ProfilePage']['0']['graphql']['user']['edge_owner_to_timeline_media']['edges'];
 
         // Get only the image Post.
-        foreach ($variable as $key => $value) {
+        foreach ($variable as $value) {
           if (!$value['node']['is_video']) {
             $image_post[] = $value;
           }
         }
 
         if (count($image_post) < 4) {
-          foreach ($variable as $key => $value) {
+          foreach ($variable as $value) {
             if ($value['node']['is_video']) {
               $image_post[] = $value;
             }
@@ -160,18 +177,19 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
         }
 
         $slice_variable = array_slice($image_post, 0, $this->settings['num']);
-        foreach ($slice_variable as $key => $value) {
+        foreach ($slice_variable as $value) {
           // Generate path.
           $shortcode = $value['node']['shortcode'];
           // Image source.
           $src = $value['node']['thumbnail_src'];
           if (isset($value['node']['edge_media_to_caption']['edges'][0]['node']['text'])) {
             $caption = $value['node']['edge_media_to_caption']['edges'][0]['node']['text'];
-          } else {
+          }
+          else {
             $caption = '';
           }
           $truncate = new TruncateHTML();
-          $trim_caption = $truncate->truncateChars($caption, 100, '...');
+          $trim_caption = $truncate->truncateChars($caption, 120, '...');
 
           $data['posts'][] = [
             'image' => $src,
