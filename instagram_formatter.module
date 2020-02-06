@@ -2,7 +2,10 @@
 
 /**
  * @file
+ * Instagram formatter module.
  */
+
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_theme().
@@ -18,4 +21,18 @@ function instagram_formatter_theme() {
       'template' => 'instagram-block',
     ],
   ];
+}
+
+/**
+ * Implements hook_help().
+ */
+function instagram_formatter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the instagram_formatter module.
+    case 'help.page.instagram_formatter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Instagram block that displays Instagram posts.') . '</p>';
+      return $output;
+  }
 }
