@@ -3,8 +3,6 @@
 namespace Drupal\instagram_formatter\Plugin\Field\FieldFormatter;
 
 use Drupal\Component\Serialization\Json;
-use Drupal\Core\Annotation\Translation;
-use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;

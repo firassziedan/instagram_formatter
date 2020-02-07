@@ -1,32 +1,41 @@
 .instagram-wapper {
   margin-top: 50px;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+}
 .instagram-wapper .profile h2 {
   margin-top: 10px;
   margin: 5px 0 20px;
-  color: #484a56; }
+  color: #484a56;
+}
 .instagram-wapper .profile a {
   display: inline-block;
   text-decoration: none;
-  direction: ltr; }
+  direction: ltr;
+}
 .instagram-wapper .profile a:hover svg path {
-  fill: #B11F28; }
+  fill: #b11f28;
+}
 .instagram-wapper .profile a:hover h2 {
-  color: #B11F28; }
+  color: #b11f28;
+}
 .instagram-wapper .posts-wrapper {
-  position: relative; }
+  position: relative;
+}
 .instagram-wapper .posts-wrapper .post-wrapper {
   display: block;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 .instagram-wapper .posts-wrapper .post-wrapper .post {
   position: relative;
   display: grid;
   display: -ms-grid;
-  overflow: hidden; }
+  overflow: hidden;
+}
 .instagram-wapper .posts-wrapper .post-wrapper .post .post-image {
   width: 100%;
   -o-object-fit: contain;
-  object-fit: contain; }
+  object-fit: contain;
+}
 .instagram-wapper .posts-wrapper .post-wrapper .post .post-caption {
   position: absolute;
   background: rgba(200, 16, 46, 0.5);
@@ -50,25 +59,33 @@
   -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
   transition: opacity 0.5s, -webkit-transform 0.5s;
   -o-transition: opacity 0.5s, -o-transform 0.5s;
-  transition: opacity 0.5s, transform 0.5s;
-  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s, -o-transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s,
+    -o-transform 0.5s;
   -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0); }
+  transform: translate3d(0, 100%, 0);
+}
 .instagram-wapper .posts-wrapper .post-wrapper .post .post-caption .caption {
   direction: ltr;
   text-align: left;
   -webkit-transition: -webkit-transform 0.65s;
   transition: -webkit-transform 0.65s;
   -o-transition: -o-transform 0.65s;
-  transition: transform 0.65s;
   transition: transform 0.65s, -webkit-transform 0.65s, -o-transform 0.65s;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0); }
+  transform: translate3d(0, 100%, 0);
+}
 .instagram-wapper .posts-wrapper .post-wrapper .post:hover .post-caption {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
-.instagram-wapper .posts-wrapper .post-wrapper .post:hover .post-caption .caption {
+  transform: translate3d(0, 0, 0);
+}
+.instagram-wapper
+  .posts-wrapper
+  .post-wrapper
+  .post:hover
+  .post-caption
+  .caption {
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  transform: translate3d(0, 0, 0);
+}
