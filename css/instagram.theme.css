@@ -2,15 +2,17 @@
   margin-top: 50px;
   margin-bottom: 50px; }
 .instagram-wapper .profile h2 {
-  margin-top: 10px; }
+  margin-top: 10px;
+  margin: 5px 0 20px;
+  color: #484a56; }
 .instagram-wapper .profile a {
   display: inline-block;
   text-decoration: none;
   direction: ltr; }
 .instagram-wapper .profile a:hover svg path {
-  fill: #c8102e; }
+  fill: #B11F28; }
 .instagram-wapper .profile a:hover h2 {
-  color: #c8102e; }
+  color: #B11F28; }
 .instagram-wapper .posts-wrapper {
   position: relative; }
 .instagram-wapper .posts-wrapper .post-wrapper {
