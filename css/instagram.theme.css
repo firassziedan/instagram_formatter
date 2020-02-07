@@ -59,8 +59,7 @@
   -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
   transition: opacity 0.5s, -webkit-transform 0.5s;
   -o-transition: opacity 0.5s, -o-transform 0.5s;
-  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s,
-    -o-transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s, -o-transform 0.5s;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
@@ -80,12 +79,7 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-.instagram-wapper
-  .posts-wrapper
-  .post-wrapper
-  .post:hover
-  .post-caption
-  .caption {
+.instagram-wapper .posts-wrapper .post-wrapper .post:hover .post-caption .caption {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
