@@ -36,3 +36,10 @@ function instagram_formatter_help($route_name, RouteMatchInterface $route_match)
       return $output;
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function instagram_formatter_theme_suggestions_instagram_formatter_post_alter(array &$suggestions, array $variables) {
+  $suggestions[] = '';
+}
