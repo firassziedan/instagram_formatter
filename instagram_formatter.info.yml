@@ -1,9 +1,10 @@
 name: Instagram Formatter
-description: 'Instagram block that displays Instagram posts'
-type: module
+description: 'Instagram block that displays Instagram posts.'
+package: Instagram
 
+type: module
 core: 8.x
 core_version_requirement: ^8 || ^9
-package: Instagram
+
 dependencies:
   - drupal:smart_trim
