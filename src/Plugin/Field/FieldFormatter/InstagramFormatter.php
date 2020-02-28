@@ -3,14 +3,13 @@
 namespace Drupal\instagram_formatter\Plugin\Field\FieldFormatter;
 
 use Drupal\Component\Serialization\Json;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\smart_trim\Truncate\TruncateHTML;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
