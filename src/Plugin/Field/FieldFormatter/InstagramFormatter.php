@@ -152,7 +152,7 @@ class InstagramFormatter extends FormatterBase implements ContainerFactoryPlugin
       $obj = Json::decode($jsondata, TRUE);
 
       // If the profile private.
-      if ( isset($obj['entry_data']['ProfilePage']) && $obj['entry_data']['ProfilePage']['0']['graphql']['user']['is_private']) {
+      if (isset($obj['entry_data']['ProfilePage']) && $obj['entry_data']['ProfilePage']['0']['graphql']['user']['is_private']) {
         return [];
       }
 

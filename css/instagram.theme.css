@@ -27,8 +27,7 @@
 }
 .instagram-wapper .posts-wrapper .post-wrapper .post {
   position: relative;
-  display: -ms-grid;
-  display: grid;
+  display: inline-flex;
   overflow: hidden;
 }
 .instagram-wapper .posts-wrapper .post-wrapper .post .post-image {
